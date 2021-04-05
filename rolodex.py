@@ -1,3 +1,5 @@
+import csv
+
 # Entry Class definition
 class Entry:
   def __init__(self, name, phone, address, bday, notes):
@@ -20,8 +22,19 @@ def new_entry(name, phone, address, bday, notes):
   entry_no += 1
   entries[entry_no] = split_name[0]
   entries[entry_no] = Entry(name, phone, address, bday, notes)
+  
 
-# Beginning of user interaction
+# Ask the user for filename, and open said file
+print('Hello!  Which file would you like to review?')
+filename = input()
+with open(filename+'.csv','r') as rolodex:
+  rolodex_contents = csv.reader(rolodex)
+  next(rolodex_contents)
+  
+  for entry in rolodex_contents:
+    print(entry)
+
+
 print('Hello! What would you like to do today: Add, Delete, Update, or Display?')
 resp = input()
 
@@ -42,4 +55,4 @@ if resp == 'Add':
   print("Created new entry")
 
 
-print(entries[1])
+#print(entries[1])
