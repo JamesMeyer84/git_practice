@@ -10,12 +10,21 @@ class Entry:
   def __repr__(self):
     return self.name
 
+#Objects will be stored in entries dict
 entries = {}
 entry_no = 0
+
+def new_entry(name, phone, address, bday, notes):
+  global entry_no
+  split_name = name.split()
+  entry_no += 1
+  entries[entry_no] = split_name[0]
+  entries[entry_no] = Entry(name, phone, address, bday, notes)
 
 # Beginning of user interaction
 print('Hello! What would you like to do today: Add, Delete, Update, or Display?')
 resp = input()
+
 
 if resp == 'Add':
   print('What is the new entry\'s name?')
@@ -28,10 +37,8 @@ if resp == 'Add':
   new_bday = input()
   print('Please enter any notes:')
   new_notes = input()
-  split_name = new_name.split()
-  entry_no += 1
-  entries[entry_no] = split_name[0].lower
-  entries[entry_no] = Entry(new_name, new_phone, new_address, new_bday, new_notes)
+  #New object creation
+  new_entry(new_name, new_phone, new_address, new_bday, new_notes)
   print("Created new entry")
 
 
