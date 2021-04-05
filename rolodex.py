@@ -60,12 +60,18 @@ while resp != 'Exit':
     print('Please enter the name of the person whose entry you would like to delete:')
     del_name = input()
     del_key = 0
-    for id, name in entries.items():
-      if str(name) == del_name:
-        del_key = id
-    entries.pop(del_key)
-    print("Entry deleted.  Will there be anything else?")
-    print("--Enter 'Add', 'Delete', 'Update', 'Display', or 'Exit'")
-    resp = input()
+    try:
+      for id, name in entries.items():
+        if str(name) == del_name:
+          del_key = id
+      entries.pop(del_key)
+      print("Entry deleted.  Will there be anything else?")
+      print("--Enter 'Add', 'Delete', 'Update', 'Display', or 'Exit'")
+      resp = input()
+    except KeyError:
+      print("I'm sorry, there doesn't seem to be an entry under that name.  Can I help you with something else?")
+      print("--Enter 'Add', 'Delete', 'Update', 'Display', or 'Exit'")
+      resp = input()
+
 
 print(entries)
