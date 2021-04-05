@@ -7,7 +7,10 @@ class Entry:
     self.bday = bday
     self.notes = notes
 
-entry_name = {}
+  def __repr__(self):
+    return self.name
+
+entries = {}
 entry_no = 0
 
 # Beginning of user interaction
@@ -27,15 +30,9 @@ if resp == 'Add':
   new_notes = input()
   split_name = new_name.split()
   entry_no += 1
-  entry_name[entry_no] = split_name[0].lower
-  entry_name[entry_no] = Entry(new_name, new_phone, new_address, new_bday, new_notes)
+  entries[entry_no] = split_name[0].lower
+  entries[entry_no] = Entry(new_name, new_phone, new_address, new_bday, new_notes)
   print("Created new entry")
-#else:
-#  print('Nevermind')
 
 
-#elliott = Entry('Elliott Meyer', 6159461561, '2509 Western Hills Dr Nashville TN 37214', '08/22/1984','')
-
-#elliott.name = 'James Elliott Meyer'
-#print(emily.name)
-#print(elliott.address)
+print(entries[1])
