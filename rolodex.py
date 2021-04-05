@@ -58,7 +58,6 @@ while resp != 'Exit':
     resp = input()
   elif resp == 'Delete':
     print('Please enter the name of the person whose entry you would like to delete:')
-    # Put a condition here for if there's not a matching entry
     del_name = input()
     del_key = 0
     for id, name in entries.items():
